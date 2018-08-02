@@ -21,3 +21,12 @@ resource "azurerm_storage_container" "container1" {
   storage_account_name = "${azurerm_storage_account.AzureSA.name}"
   container_access_type = "private"
 }
+
+resource "azurerm_storage_blob" "blob1" {
+  name = "blob1"
+  resource_group_name = "${azurerm_resource_group.AzureRG.name}"
+  storage_account_name = "${azurerm_storage_account.AzureSA.name}"
+  storage_container_name = "${azurerm_storage_container.container1.name}"
+
+  type = "block"
+}
